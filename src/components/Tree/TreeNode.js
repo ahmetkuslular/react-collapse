@@ -1,13 +1,52 @@
 import React from 'react';
 import styled from 'styled-components';
 
-function TreeNode() {
-  return (
-    <AppToggle>
-      <div>Node</div>
-    </AppToggle>
-  );
+class TreeNode extends React.Component {
+  state = {
+    visible: true,
+  };
+
+  getChildren(node) {
+    const children = [];
+    if (node.children) {
+      node.children.map(childNode => {
+        children.push(<TreeNode key={childNode.ID} node={childNode} />);
+      });
+    }
+    return children;
+  }
+
+  toggleExpanded = (id, event) => {
+    this.setState(state => ({
+      ...state,
+      visible: !state.visible,
+    }));
+  };
+
+  render() {
+    const { node } = this.props;
+    const { visible } = this.state;
+    const children = this.getChildren(node);
+
+    const visibleStyle = visible ? { display: 'none' } : { display: '' };
+
+    return (
+      <Container key={node.ID}>
+        <AppToggle>
+          <a onClick={this.toggleExpanded}>{node.Name}</a>
+        </AppToggle>
+        <ul style={visibleStyle}>{children}</ul>
+      </Container>
+    );
+  }
 }
+
+const Container = styled.div`
+  flex: 1;
+  width: 100%;
+  margin: 1rem 0;
+
+`;
 
 const AppToggle = styled.div`
   flex: 1;

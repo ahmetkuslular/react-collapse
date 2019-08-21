@@ -42,7 +42,7 @@ class TreeNode extends React.Component {
               <PlusIcon color={open ? '#f50' : '#000'} />
             </VelocityComponent>
           </IconWrapper>
-          <Label onClick={this.toggleExpanded} >{node.Name}</Label>
+          <Label onClick={this.toggleExpanded}>{node.Name}</Label>
         </AppToggle>
         {children.length > 0 && (
           <VelocityTransitionGroup
@@ -100,9 +100,12 @@ const Container = styled.li`
           }
         }
   `}
+
   &:last-child:after {
     display: none;
   }
+  
+  
 `;
 
 const AppToggle = styled.div`
@@ -118,11 +121,14 @@ const AppToggle = styled.div`
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
   background-color: #fff;
   transition: background-color 300ms;
+  &:hover {
+    border: 0.5px solid;
+    border-color: #f50;
+  }
 `;
 
 const IconWrapper = styled.div`
   margin-right: 10px;
-
 `;
 
 export default TreeNode;

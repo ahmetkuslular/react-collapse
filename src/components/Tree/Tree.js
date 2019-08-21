@@ -7,9 +7,11 @@ function Tree({ data }) {
   const tree = createTree(data);
   return (
     <Container>
-      {tree.map(node => (
-        <TreeNode key={node.ID} node={node} />
-      ))}
+      <Listing>
+        {tree.map(node => (
+          <TreeNode key={node.ID} node={node}/>
+        ))}
+      </Listing>
     </Container>
   );
 }
@@ -17,6 +19,10 @@ function Tree({ data }) {
 const Container = styled.div`
   flex: 1;
   width: 100%;
+`;
+
+const Listing = styled.ul`
+  list-style-type: none;
 `;
 
 export default Tree;

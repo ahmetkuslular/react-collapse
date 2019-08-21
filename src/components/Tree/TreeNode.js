@@ -1,9 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
+import { VelocityComponent, VelocityTransitionGroup } from 'velocity-react';
+import PlusIcon from './plus-icon';
 
 class TreeNode extends React.Component {
   state = {
-    visible: true,
+    open: false,
+    duration: 500,
   };
 
   getChildren(node) {
@@ -16,36 +19,90 @@ class TreeNode extends React.Component {
     return children;
   }
 
-  toggleExpanded = (id, event) => {
+  toggleExpanded = () => {
     this.setState(state => ({
       ...state,
-      visible: !state.visible,
+      open: !state.open,
     }));
   };
 
   render() {
     const { node } = this.props;
-    const { visible } = this.state;
+    const { open } = this.state;
     const children = this.getChildren(node);
 
-    const visibleStyle = visible ? { display: 'none' } : { display: '' };
-
     return (
-      <Container key={node.ID}>
+      <Container key={node.ID} open={open}>
         <AppToggle>
-          <a onClick={this.toggleExpanded}>{node.Name}</a>
+          <IconWrapper open={open}>
+            <VelocityComponent
+              animation={{ rotateZ: open ? 45 : 0 }}
+              duration={this.state.duration}
+            >
+              <PlusIcon color={open ? '#f50' : '#000'} />
+            </VelocityComponent>
+          </IconWrapper>
+          <Label onClick={this.toggleExpanded} >{node.Name}</Label>
         </AppToggle>
-        <ul style={visibleStyle}>{children}</ul>
+        {children.length > 0 && (
+          <VelocityTransitionGroup
+            component="ul"
+            enter={{
+              animation: 'slideDown',
+              duration: this.state.duration,
+              style: { height: '' },
+            }}
+            leave={{ animation: 'slideUp', duration: this.state.duration }}
+          >
+            {this.state.open ? children : null}
+          </VelocityTransitionGroup>
+        )}
       </Container>
     );
   }
 }
 
-const Container = styled.div`
-  flex: 1;
-  width: 100%;
-  margin: 1rem 0;
+const Label = styled.div`
+  font-size: 15px;
+`;
+const Container = styled.li`
+  list-style-type: none;
+  margin: 10px 0 10px 10px;
+  position: relative;
 
+  &:before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -30px;
+    border-left: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    width: 30px;
+    height: 30px;
+  }
+  &:after {
+    position: absolute;
+    content: '';
+    top: 20px;
+    left: -30px;
+    border-left: 1px solid #ddd;
+    border-top: 1px solid #ddd;
+    width: 30px;
+    height: 100%;
+  }
+
+  ${props =>
+    props.open &&
+    `
+    li {
+          &:after,&:before {
+            border-color:  #f50;
+          }
+        }
+  `}
+  &:last-child:after {
+    display: none;
+  }
 `;
 
 const AppToggle = styled.div`
@@ -61,6 +118,11 @@ const AppToggle = styled.div`
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
   background-color: #fff;
   transition: background-color 300ms;
+`;
+
+const IconWrapper = styled.div`
+  margin-right: 10px;
+
 `;
 
 export default TreeNode;

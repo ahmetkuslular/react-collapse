@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/react-expand-collapse-example/static/css/main.9cc1f00d.chunk.css",
+    "main.js": "/react-expand-collapse-example/static/js/main.00be6036.chunk.js",
+    "main.js.map": "/react-expand-collapse-example/static/js/main.00be6036.chunk.js.map",
+    "runtime~main.js": "/react-expand-collapse-example/static/js/runtime~main.a6fc9951.js",
+    "runtime~main.js.map": "/react-expand-collapse-example/static/js/runtime~main.a6fc9951.js.map",
+    "static/js/2.572b4746.chunk.js": "/react-expand-collapse-example/static/js/2.572b4746.chunk.js",
+    "static/js/2.572b4746.chunk.js.map": "/react-expand-collapse-example/static/js/2.572b4746.chunk.js.map",
+    "index.html": "/react-expand-collapse-example/index.html",
+    "precache-manifest.27af4c27c33b612e75a04c2d09bb4db9.js": "/react-expand-collapse-example/precache-manifest.27af4c27c33b612e75a04c2d09bb4db9.js",
+    "service-worker.js": "/react-expand-collapse-example/service-worker.js",
+    "static/css/main.9cc1f00d.chunk.css.map": "/react-expand-collapse-example/static/css/main.9cc1f00d.chunk.css.map"
+  }
+}

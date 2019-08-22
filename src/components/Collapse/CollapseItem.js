@@ -13,18 +13,18 @@ class CollapseItem extends Component {
   };
 
   state = {
-    open: false,
+    itemOpen: false,
   };
 
   toggleExpanded = () => {
     this.setState(state => ({
       ...state,
-      open: !state.open,
+      itemOpen: !state.itemOpen,
     }));
   };
 
   render() {
-    const { open } = this.state;
+    const { itemOpen } = this.state;
     const {
       headerStyle,
       label,
@@ -35,16 +35,15 @@ class CollapseItem extends Component {
       item,
       useAnimation,
       children,
-      closeChildren,
       deleteItem,
     } = this.props;
 
-    const color = open ? openColor : closeColor;
+    const color = itemOpen ? openColor : closeColor;
     return (
       <Container style={headerStyle}>
         <Header style={headerStyle}>
           <HeaderContent onClick={this.toggleExpanded}>
-            <HeaderIcon open={open} useAnimation={useAnimation} icon={icon} color={color} />
+            <HeaderIcon open={itemOpen} useAnimation={useAnimation} icon={icon} color={color} />
             <Label style={labelStyle}>{label}</Label>
           </HeaderContent>
           <ActionButtonGroup>
@@ -62,20 +61,18 @@ class CollapseItem extends Component {
           }}
           leave={{ animation: 'slideUp', duration: this.state.duration }}
         >
-          {open && <Content>{children}</Content>}
+          {itemOpen && <Content>{children}</Content>}
         </VelocityTransitionGroup>
       </Container>
     );
   }
 }
 
-const Container = styled.li`
+const Container = styled.div`
   flex: 1;
   margin: 1rem 0;
-  background-color: #fff;
+  background-color: #f7f7f7;
   align-items: center;
-  padding: 1rem;
-  margin: 1rem 0;
   border: 0.5px solid;
   border-color: #e5e5e5;
   border-radius: 5px;
@@ -91,6 +88,7 @@ const Header = styled.div`
   align-items: center;
   cursor: pointer;
   justify-content: space-between;
+  padding: 1rem;
 `;
 
 const HeaderContent = styled.div`
@@ -103,6 +101,8 @@ const Content = styled.div`
   margin-top: 10px;
   padding-top: 10px;
   border-top: 1px solid rgb(181, 181, 181, 0.2);
+  background-color: #fff;
+  padding: 1rem;
 `;
 
 const Label = styled.div`
@@ -123,6 +123,8 @@ const IconWrapper = styled.div`
   }
 `;
 
-const ActionButtonGroup = styled.div``;
+const ActionButtonGroup = styled.div`
+  justift-content: flex-end;
+`;
 
 export default CollapseItem;

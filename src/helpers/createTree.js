@@ -6,6 +6,7 @@ function createTree(items) {
   items.map(item => {
     mappedItems[item.ID] = item;
     mappedItems[item.ID].children = [];
+    mappedItems[item.ID].open = true;
   });
 
   for (let id in mappedItems) {

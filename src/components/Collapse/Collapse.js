@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { uid } from 'react-uid';
 
 import CollapseItem from './CollapseItem';
+import ItemContent from './ItemContent';
 
 class Collapse extends Component {
   state = {
@@ -24,8 +25,9 @@ class Collapse extends Component {
         item={item}
         label={item.ID + ' ' + item.Name}
         deleteItem={deleteItem}
+        open={item.open}
       >
-        <div>{item.ID}</div>
+        <ItemContent item={item} />
         {itemChildren}
       </CollapseItem>
     );

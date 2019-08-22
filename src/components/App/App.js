@@ -6,9 +6,9 @@ import Collapse from 'components/Collapse';
 import { createTree } from 'helpers';
 import { dataset } from 'feeds';
 import './App.css';
-import HeaderIcon from '../HeaderIcon';
-import { CollapseIcon, ExpandIcon, TrashIcon } from '../Icons';
+import { CollapseIcon, ExpandIcon, VectorIcon } from '../Icons';
 
+//TODO: expandAll, collapseAll and tree type
 class App extends Component {
   state = {
     data: createTree(dataset),
@@ -45,6 +45,10 @@ class App extends Component {
             <CollapseIcon />
             <Label>Collapse All</Label>
           </Button>
+          <Button>
+            <VectorIcon />
+            <Label>Tree</Label>
+          </Button>
         </Header>
         <Collapse data={data} deleteItem={this.deleteItem} />
       </Container>
@@ -68,16 +72,6 @@ const AppTitle = styled.h2`
   color: #b5b5b5;
 `;
 
-const ControlPanel = styled.div`
-  background-color: #f50;
-  flex: 1;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  margin: 10px;
-  padding: 10px;
-`;
-
 const Button = styled.div`
   display: flex;
   align-items: center;
@@ -86,6 +80,10 @@ const Button = styled.div`
   border-radius: 5px;
   padding: 5px 20px 5px 20px;
   margin-right: 10px;
+  &:hover {
+    transform: translateY(-1px);
+    box-shadow: 0px 2px 3px -1px #ddd;
+  }
 `;
 
 const Header = styled.div`
@@ -101,21 +99,5 @@ const Label = styled.div`
   font-size: 12px;
   padding-left: 10px;
 `;
-
-const IconWrapper = styled.div`
-  height: 25px;
-  width: 25px;
-  text-align: center;
-  justify-content: center;
-  border-radius: 50%;
-  display: inline-block;
-  &:hover {
-    border: 0.5px solid;
-    background-color: rgb(255, 85, 0, 0.3);
-    color: #fff;
-  }
-`;
-
-const ActionButtonGroup = styled.div``;
 
 export default App;

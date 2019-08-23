@@ -13,13 +13,13 @@
     "velocity-react": "^1.4.3"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "NODE_PATH=src:src/components react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "NODE_PATH=src:src/components jest --env=jsdom",
     "eject": "react-scripts eject",
     "format": "prettier \"src/**/*.{js,html}\" --write",
-    "predeploy": "yarn build",
-    "deploy": "gh-pages -d build"
+    "predeploy": "NODE_PATH=src:src/components yarn build",
+    "deploy": "NODE_PATH=src:src/components gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"

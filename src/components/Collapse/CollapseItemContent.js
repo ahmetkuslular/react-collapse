@@ -1,24 +1,24 @@
 import React from 'react';
 import styled from 'styled-components';
-import { KeyIcon, TrashIcon } from '../Icons';
+import { CityIcon, KeyIcon, PhoneIcon, ProfileIcon } from '../Icons';
 
 const contentFields = [
-  { label: 'ID', valueKey: 'ID' },
-  { label: 'Name', valueKey: 'Name' },
-  { label: 'Phone', valueKey: 'Phone' },
-  { label: 'City', valueKey: 'City' },
+  { label: 'ID', valueKey: 'ID', icon: KeyIcon },
+  { label: 'Name', valueKey: 'Name', icon: ProfileIcon },
+  { label: 'Phone', valueKey: 'Phone', icon: PhoneIcon },
+  { label: 'City', valueKey: 'City', icon: CityIcon },
 ];
 
 function CollapseItemContent({ item }) {
   return (
     <Container>
-      {contentFields.map((field, index) => (
+      {contentFields.map(({ icon: Icon, label, valueKey }, index) => (
         <Row key={index}>
           <Key>
-            <KeyIcon />
-            <Label>{field.label}</Label>
+            <Icon />
+            <Label>{label}</Label>
           </Key>
-          <Label>{item[field.valueKey]}</Label>
+          <Label>{item[valueKey]}</Label>
         </Row>
       ))}
     </Container>

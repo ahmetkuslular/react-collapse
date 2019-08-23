@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 
-import Collapse from 'components/Collapse';
+import Collapse, { CollapseItem, CollapseItemContent } from 'components/Collapse';
 
 import { generateTree } from 'helpers';
 import { dataset } from 'feeds';
 import './App.css';
-import CollapseItem from '../Collapse/CollapseItem';
 
 class App extends Component {
   state = {
@@ -33,7 +32,7 @@ class App extends Component {
   renderItem = ({ item }) => {
     return (
       <CollapseItem label={item.Name} id={item.ID} deleteItem={this.deleteItem}>
-        {item.Name}
+        <CollapseItemContent item={item}/>
         <Collapse data={item.children} renderItem={this.renderItem} />
       </CollapseItem>
     );
@@ -44,7 +43,7 @@ class App extends Component {
     return (
       <Container>
         <AppTitle>React Expand Collapse Example</AppTitle>
-        <Collapse data={data} renderItem={this.renderItem}/>
+        <Collapse data={data} renderItem={this.renderItem} />
       </Container>
     );
   }

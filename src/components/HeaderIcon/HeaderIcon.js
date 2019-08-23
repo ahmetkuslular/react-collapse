@@ -21,7 +21,7 @@ function AnimationWrapper({ useAnimation, children, ...props }) {
 
 function HeaderIcon({
   icon: Icon,
-  open,
+  isActive,
   useAnimation,
   animationOptions: { duration, rotateZ },
   color,
@@ -30,7 +30,7 @@ function HeaderIcon({
     <Container>
       <AnimationWrapper
         useAnimation={Icon ? useAnimation : true}
-        animation={{ rotateZ: open ? rotateZ : 0 }}
+        animation={{ rotateZ: isActive ? rotateZ : 0 }}
         duration={duration}
       >
         {Icon ? <Icon color={color} /> : <RightArrowIcon color={color} />}

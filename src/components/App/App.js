@@ -6,9 +6,8 @@ import Collapse from 'components/Collapse';
 import { createTree } from 'helpers';
 import { dataset } from 'feeds';
 import './App.css';
-import { CollapseIcon, ExpandIcon, VectorIcon } from '../Icons';
+import CollapseItem from '../Collapse/CollapseItem';
 
-//TODO: expandAll, collapseAll and tree type
 class App extends Component {
   state = {
     data: createTree(dataset),
@@ -17,6 +16,7 @@ class App extends Component {
   deleteItem = id => {
     const { data } = this.state;
     const replaceData = this.removeFromTree(data, id);
+    console.log('replacedData', replaceData);
     this.setState({
       data: replaceData,
     });
@@ -31,26 +31,22 @@ class App extends Component {
     return data;
   };
 
+  renderItem = ({ item }) => {
+    return (
+      <CollapseItem label={item.Name} id={item.ID} deleteItem={this.deleteItem}>
+        SElam
+        <Collapse data={item.children} renderItem={this.renderItem} />
+      </CollapseItem>
+    );
+  };
+
   render() {
     const { data } = this.state;
+    console.log('DATA:', data);
     return (
       <Container>
         <AppTitle>React Expand Collapse Example</AppTitle>
-        <Header>
-          <Button>
-            <ExpandIcon />
-            <Label>Expand All</Label>
-          </Button>
-          <Button>
-            <CollapseIcon />
-            <Label>Collapse All</Label>
-          </Button>
-          <Button>
-            <VectorIcon />
-            <Label>Tree</Label>
-          </Button>
-        </Header>
-        <Collapse data={data} deleteItem={this.deleteItem} />
+        <Collapse data={data} renderItem={this.renderItem} />
       </Container>
     );
   }
@@ -70,34 +66,6 @@ const Container = styled.div`
 
 const AppTitle = styled.h2`
   color: #b5b5b5;
-`;
-
-const Button = styled.div`
-  display: flex;
-  align-items: center;
-  border: 0.5px solid;
-  border-color: #e5e5e5;
-  border-radius: 5px;
-  padding: 5px 20px 5px 20px;
-  margin-right: 10px;
-  &:hover {
-    transform: translateY(-1px);
-    box-shadow: 0px 2px 3px -1px #ddd;
-  }
-`;
-
-const Header = styled.div`
-  display: flex;
-  flex: 1;
-  width: 100%;
-  align-items: center;
-  cursor: pointer;
-`;
-
-const Label = styled.div`
-  color: #000;
-  font-size: 12px;
-  padding-left: 10px;
 `;
 
 export default App;

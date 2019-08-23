@@ -1,30 +1,20 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
 import { VelocityTransitionGroup } from 'velocity-react';
-import { uid } from 'react-uid';
 import styled from 'styled-components';
 
 import HeaderIcon from 'components/HeaderIcon';
 import { TrashIcon } from 'components/Icons';
 
-class CollapseItem extends Component {
-  static defaultProps = {
-    openColor: '#f50',
-    closeColor: '#b5b5b5',
-  };
-
-  state = {
-    itemOpen: false,
-  };
-
-  toggleExpanded = () => {
-    this.setState(state => ({
-      ...state,
-      itemOpen: !state.itemOpen,
-    }));
+class CollapseItem extends PureComponent {
+  handleItemClick = () => {
+    const { onItemClick, itemKey } = this.props;
+    if (typeof onItemClick === 'function') {
+      onItemClick(itemKey);
+    }
   };
 
   render() {
-    const { itemOpen } = this.state;
     const {
       headerStyle,
       label,
@@ -32,24 +22,28 @@ class CollapseItem extends Component {
       icon,
       openColor,
       closeColor,
-      item,
       useAnimation,
       children,
       deleteItem,
+      isActive,
+      id,
     } = this.props;
 
-    const color = itemOpen ? openColor : closeColor;
+    const color = isActive ? openColor : closeColor;
+
     return (
       <Container style={headerStyle}>
         <Header style={headerStyle}>
-          <HeaderContent onClick={this.toggleExpanded}>
-            <HeaderIcon open={itemOpen} useAnimation={useAnimation} icon={icon} color={color} />
+          <HeaderContent onClick={this.handleItemClick}>
+            <HeaderIcon isActive={isActive} useAnimation={useAnimation} icon={icon} color={color} />
             <Label style={labelStyle}>{label}</Label>
           </HeaderContent>
           <ActionButtonGroup>
-            <IconWrapper onClick={() => deleteItem(item.ID)}>
-              <TrashIcon />
-            </IconWrapper>
+            {deleteItem && (
+              <IconWrapper onClick={() => deleteItem(id)}>
+                <TrashIcon />
+              </IconWrapper>
+            )}
           </ActionButtonGroup>
         </Header>
         <VelocityTransitionGroup
@@ -59,14 +53,24 @@ class CollapseItem extends Component {
             duration: 500,
             style: { height: '' },
           }}
-          leave={{ animation: 'slideUp', duration: this.state.duration }}
+          leave={{ animation: 'slideUp', duration: 500 }}
         >
-          {itemOpen && <Content>{children}</Content>}
+          {isActive && <Content>{children}</Content>}
         </VelocityTransitionGroup>
       </Container>
     );
   }
 }
+
+CollapseItem.defaultProps = {
+  openColor: '#f50',
+  closeColor: '#b5b5b5',
+};
+
+CollapseItem.propTypes = {
+  openColor: PropTypes.string,
+  closeColor: PropTypes.string,
+};
 
 const Container = styled.div`
   flex: 1;

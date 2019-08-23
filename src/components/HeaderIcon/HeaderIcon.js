@@ -8,8 +8,8 @@ HeaderIcon.defaultProps = {
   animationOptions: {
     duration: 500,
     rotateZ: 90,
-    useAnimation: false,
   },
+  useAnimation: true,
 };
 
 function AnimationWrapper({ useAnimation, children, ...props }) {

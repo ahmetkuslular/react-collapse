@@ -100,6 +100,7 @@ class Collapse extends Component {
 Collapse.propTypes = {
   children: PropTypes.any,
   data: PropTypes.array,
+  renderItem: PropTypes.func,
   className: PropTypes.string,
   style: PropTypes.object,
   onChange: PropTypes.func,

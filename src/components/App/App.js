@@ -16,7 +16,6 @@ class App extends Component {
   deleteItem = id => {
     const { data } = this.state;
     const replaceData = this.removeFromTree(data, id);
-    console.log('replacedData', replaceData);
     this.setState({
       data: replaceData,
     });
@@ -34,7 +33,7 @@ class App extends Component {
   renderItem = ({ item }) => {
     return (
       <CollapseItem label={item.Name} id={item.ID} deleteItem={this.deleteItem}>
-        SElam
+        {item.Name}
         <Collapse data={item.children} renderItem={this.renderItem} />
       </CollapseItem>
     );
@@ -45,7 +44,7 @@ class App extends Component {
     return (
       <Container>
         <AppTitle>React Expand Collapse Example</AppTitle>
-        <Collapse data={data} renderItem={this.renderItem} />
+        <Collapse data={data} renderItem={this.renderItem}/>
       </Container>
     );
   }

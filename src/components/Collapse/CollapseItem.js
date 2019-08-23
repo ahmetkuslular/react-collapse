@@ -16,17 +16,19 @@ class CollapseItem extends PureComponent {
 
   render() {
     const {
-      headerStyle,
+      id,
       label,
       labelStyle,
+      headerStyle,
       icon,
       openColor,
       closeColor,
-      useAnimation,
       children,
       deleteItem,
       isActive,
-      id,
+      showIcon,
+      useIconAnimation,
+      animationOptions,
     } = this.props;
 
     const color = isActive ? openColor : closeColor;
@@ -35,7 +37,15 @@ class CollapseItem extends PureComponent {
       <Container style={headerStyle}>
         <Header style={headerStyle}>
           <HeaderContent onClick={this.handleItemClick}>
-            <HeaderIcon isActive={isActive} useAnimation={useAnimation} icon={icon} color={color} />
+            {showIcon && (
+              <HeaderIcon
+                isActive={isActive}
+                useAnimation={useIconAnimation}
+                animationOptions={animationOptions}
+                icon={icon}
+                color={color}
+              />
+            )}
             <Label style={labelStyle}>{label}</Label>
           </HeaderContent>
           <ActionButtonGroup>
@@ -65,11 +75,16 @@ class CollapseItem extends PureComponent {
 CollapseItem.defaultProps = {
   openColor: '#f50',
   closeColor: '#b5b5b5',
+  showIcon: true,
 };
 
 CollapseItem.propTypes = {
   openColor: PropTypes.string,
   closeColor: PropTypes.string,
+  label: PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.node]),
+  labelStyle: PropTypes.object,
+  headerStyle: PropTypes.object,
+  showIcon: PropTypes.bool,
 };
 
 const Container = styled.div`

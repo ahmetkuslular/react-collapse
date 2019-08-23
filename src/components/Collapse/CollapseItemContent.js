@@ -9,7 +9,7 @@ const contentFields = [
   { label: 'City', valueKey: 'City' },
 ];
 
-function ItemContent({ item }) {
+function CollapseItemContent({ item }) {
   return (
     <Container>
       {contentFields.map((field, index) => (
@@ -51,4 +51,4 @@ const Label = styled.div`
   padding-left: 10px;
 `;
 
-export default ItemContent;
+export default CollapseItemContent;

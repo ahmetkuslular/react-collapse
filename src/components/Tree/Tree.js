@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 import TreeNode from './TreeNode';
-import { createTree } from '../../helpers';
+import { generateTree } from '../../helpers';
 
 function Tree({ data }) {
-  const tree = createTree(data);
+  const tree = generateTree(data);
   return (
     <Container>
       <Listing>

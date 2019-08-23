@@ -3,14 +3,14 @@ import styled from 'styled-components';
 
 import Collapse from 'components/Collapse';
 
-import { createTree } from 'helpers';
+import { generateTree } from 'helpers';
 import { dataset } from 'feeds';
 import './App.css';
 import CollapseItem from '../Collapse/CollapseItem';
 
 class App extends Component {
   state = {
-    data: createTree(dataset),
+    data: generateTree(dataset, 'ID', 'parentID'),
   };
 
   deleteItem = id => {
@@ -42,7 +42,6 @@ class App extends Component {
 
   render() {
     const { data } = this.state;
-    console.log('DATA:', data);
     return (
       <Container>
         <AppTitle>React Expand Collapse Example</AppTitle>

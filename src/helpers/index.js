@@ -1,5 +1,5 @@
-import createTree from "./createTree";
+import generateTree from "./generateTree";
 
 export {
-    createTree
+    generateTree
 }

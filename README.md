@@ -22,6 +22,41 @@ $ yarn start
 # Run the test
 $ yarn test
 ```
+## Usage
+
+##### example - children:
+```js
+const Example = (
+  <Collapse>
+    <CollapseItem header="Collapse - 1" >this is collapse item content</CollapseItem>
+    <CollapseItem header="Collapse - 2">this is collapse item content2 or other</CollapseItem>
+  </Collapse>
+);
+ReactDOM.render(Example, container);
+```
+
+##### example - data:
+```js
+const data = [
+    {id: 1, name: 'ahmet', age:24 },
+    {id: 2, name: 'mehmet', age:21 },
+    {id: 3, name: 'merve', age:21 }
+]
+
+function _renderItem({item}) {
+  return (
+    <CollapseItem label={item.name}>{item.name} - {item.age}</CollapseItem>
+  )   
+}
+
+const Example = (
+  <Collapse data={data} renderItem={_renderItem}>
+    <CollapseItem label="Collapse - 1" >this is collapse item content</CollapseItem>
+    <CollapseItem label="Collapse - 2">this is collapse item content2 or other</CollapseItem>
+  </Collapse>
+);
+ReactDOM.render(Example, container);
+```
 
 ## API
 

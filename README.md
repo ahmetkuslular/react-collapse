@@ -1,6 +1,6 @@
 <h4 align="center"> React Expand/Collapse Example Project </h4>
 
-[LIVE](https://ahmetkuslular.github.io/react-expand-collapse-example)
+[LIVE](https://ahmetkuslular.github.io/ak-react-collapse/)
 
 ## How To Use
 

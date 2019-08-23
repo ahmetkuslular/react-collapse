@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/ak-react-collapse/static/css/main.9cc1f00d.chunk.css",
-    "main.js": "/ak-react-collapse/static/js/main.36bbe394.chunk.js",
-    "main.js.map": "/ak-react-collapse/static/js/main.36bbe394.chunk.js.map",
+    "main.js": "/ak-react-collapse/static/js/main.cc387428.chunk.js",
+    "main.js.map": "/ak-react-collapse/static/js/main.cc387428.chunk.js.map",
     "runtime~main.js": "/ak-react-collapse/static/js/runtime~main.e67543dd.js",
     "runtime~main.js.map": "/ak-react-collapse/static/js/runtime~main.e67543dd.js.map",
-    "static/js/2.f14a25c8.chunk.js": "/ak-react-collapse/static/js/2.f14a25c8.chunk.js",
-    "static/js/2.f14a25c8.chunk.js.map": "/ak-react-collapse/static/js/2.f14a25c8.chunk.js.map",
+    "static/js/2.2a753c92.chunk.js": "/ak-react-collapse/static/js/2.2a753c92.chunk.js",
+    "static/js/2.2a753c92.chunk.js.map": "/ak-react-collapse/static/js/2.2a753c92.chunk.js.map",
     "index.html": "/ak-react-collapse/index.html",
-    "precache-manifest.9737dff834cbaa306bcf0eb39f5fed49.js": "/ak-react-collapse/precache-manifest.9737dff834cbaa306bcf0eb39f5fed49.js",
+    "precache-manifest.7ceccb42ac173ebabad7ab0477b095fa.js": "/ak-react-collapse/precache-manifest.7ceccb42ac173ebabad7ab0477b095fa.js",
     "service-worker.js": "/ak-react-collapse/service-worker.js",
     "static/css/main.9cc1f00d.chunk.css.map": "/ak-react-collapse/static/css/main.9cc1f00d.chunk.css.map"
   }

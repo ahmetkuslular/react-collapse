@@ -1,8 +1,8 @@
 {
-  "name": "expand-collapse-example",
+  "name": "ak-react-collapse",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://ahmetkuslular.github.io/react-expand-collapse-example",
+  "homepage": "https://ahmetkuslular.github.io/ak-react-collapse",
   "dependencies": {
     "gh-pages": "^2.1.1",
     "react": "^16.9.0",
